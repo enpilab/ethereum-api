@@ -291,9 +291,9 @@ End solidity-cborutils
  */
 
 contract usingOraclize {
-    uint constant day = 60*60*24;
-    uint constant week = 60*60*24*7;
-    uint constant month = 60*60*24*30;
+    uint constant day = 60 * 60 * 24;
+    uint constant week = 60 * 60 * 24 * 7;
+    uint constant month = 60 * 60 * 24 * 30;
     byte constant proofType_NONE = 0x00;
     byte constant proofType_TLSNotary = 0x10;
     byte constant proofType_Ledger = 0x30;
@@ -479,12 +479,12 @@ contract usingOraclize {
         string datasource,
         string arg
     )
-    oraclizeAPI
-    internal
-    returns (bytes32 id)
+        oraclizeAPI
+        internal
+        returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         return oraclize.query.value(price)(0, datasource, arg);
     }
 
@@ -498,7 +498,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         return oraclize.query.value(price)(timestamp, datasource, arg);
     }
 
@@ -513,7 +513,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         return oraclize.query_withGasLimit.value(price)(timestamp, datasource, arg, gaslimit);
     }
 
@@ -527,7 +527,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         return oraclize.query_withGasLimit.value(price)(0, datasource, arg, gaslimit);
     }
 
@@ -541,7 +541,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         return oraclize.query2.value(price)(0, datasource, arg1, arg2);
     }
 
@@ -556,7 +556,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         return oraclize.query2.value(price)(timestamp, datasource, arg1, arg2);
     }
 
@@ -572,7 +572,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         return oraclize.query2_withGasLimit.value(price)(timestamp, datasource, arg1, arg2, gaslimit);
     }
 
@@ -587,7 +587,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         return oraclize.query2_withGasLimit.value(price)(0, datasource, arg1, arg2, gaslimit);
     }
 
@@ -600,7 +600,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         bytes memory args = stra2cbor(argN);
         return oraclize.queryN.value(price)(0, datasource, args);
     }
@@ -615,7 +615,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         bytes memory args = stra2cbor(argN);
         return oraclize.queryN.value(price)(timestamp, datasource, args);
     }
@@ -631,7 +631,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         bytes memory args = stra2cbor(argN);
         return oraclize.queryN_withGasLimit.value(price)(timestamp, datasource, args, gaslimit);
     }
@@ -646,7 +646,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         bytes memory args = stra2cbor(argN);
         return oraclize.queryN_withGasLimit.value(price)(0, datasource, args, gaslimit);
     }
@@ -973,7 +973,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         bytes memory args = ba2cbor(argN);
         return oraclize.queryN.value(price)(0, datasource, args);
     }
@@ -988,7 +988,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource);
-        if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * 200000) return 0; // unexpectedly high price
         bytes memory args = ba2cbor(argN);
         return oraclize.queryN.value(price)(timestamp, datasource, args);
     }
@@ -1004,7 +1004,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         bytes memory args = ba2cbor(argN);
         return oraclize.queryN_withGasLimit.value(price)(timestamp, datasource, args, gaslimit);
     }
@@ -1019,7 +1019,7 @@ contract usingOraclize {
         returns (bytes32 id)
     {
         uint price = oraclize.getPrice(datasource, gaslimit);
-        if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
+        if (price > 1 ether + tx.gasprice * gaslimit) return 0; // unexpectedly high price
         bytes memory args = ba2cbor(argN);
         return oraclize.queryN_withGasLimit.value(price)(0, datasource, args, gaslimit);
     }
@@ -1395,7 +1395,7 @@ contract usingOraclize {
         uint160 iaddr = 0;
         uint160 b1;
         uint160 b2;
-        for (uint i=2; i<2+2*20; i+=2){
+        for (uint i=2; i<2+2 * 20; i+=2){
             iaddr *= 256;
             b1 = uint160(tmp[i]);
             b2 = uint160(tmp[i+1]);
@@ -1405,7 +1405,7 @@ contract usingOraclize {
             if ((b2 >= 97)&&(b2 <= 102)) b2 -= 87;
             else if ((b2 >= 65)&&(b2 <= 70)) b2 -= 55;
             else if ((b2 >= 48)&&(b2 <= 57)) b2 -= 48;
-            iaddr += (b1*16+b2);
+            iaddr += (b1 * 16+b2);
         }
         return address(iaddr);
     }
@@ -1541,7 +1541,7 @@ contract usingOraclize {
         return parseInt(_a, 0);
     }
 
-    // parseInt(parseFloat*10^_b)
+    // parseInt(parseFloat * 10^_b)
     function parseInt(
         string _a,
         uint _b
