@@ -37,6 +37,8 @@ contract OraclizeI {
     address public cbAddress;
     function setProofType(byte _proofType) external;
     function setCustomGasPrice(uint _gasPrice) external;
+    function requestQueryCaching(bytes32 _queryId) external;
+    function queryCached() payable external returns (bytes32 _queryId);
     function getPrice(byte _datasource) view public returns (uint256 _dsprice);
     function randomDS_getSessionPubKeyHash() external constant returns(bytes32);
     function getPrice(string memory _datasource) view public returns (uint256 _dsprice);
@@ -1419,6 +1421,23 @@ contract usingOraclize {
             _oldGasPrice,
             _newGasPrice
         );
+    }
+
+    function oraclize_requestQueryCaching(
+        bytes32 _queryId
+    )
+        oraclizeAPI
+        internal
+    {
+        return oraclize.requestQueryCaching(_queryId);
+    }
+
+    function oraclize_queryCached()
+        oraclizeAPI
+        internal
+        returns (bytes32 _queryId)
+    {
+        return oraclize.queryCached();
     }
     /**
      *
