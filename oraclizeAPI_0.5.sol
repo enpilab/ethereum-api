@@ -36,9 +36,11 @@ contract OraclizeI {
     address public cbAddress;
     mapping (bytes32 => uint256) public price;
 
+    function unsetCustomTokenPayment() external;
     function setProofType(byte _proofType) external;
     function setCustomGasPrice(uint256 _gasPrice) external;
     function requestQueryCaching(bytes32 _queryId) external;
+    function setCustomTokenPayment(address _tokenAddress) external;
     function queryCached() payable external returns (bytes32 _queryId);
     function getPrice(byte _datasource) view public returns (uint256 _dsprice);
     function getPrice(string memory _datasource) view public returns (uint256 _dsprice);
@@ -1576,7 +1578,6 @@ contract usingOraclize {
         uint256 _gasPrice
     )
         oraclizeAPI
-        view
         internal
         returns(uint256 _rebroadcastCost)
     {
@@ -1596,6 +1597,20 @@ contract usingOraclize {
             _gasLimit,
             _gasPrice
         );
+    }
+
+    function oraclize_setCustomTokenPayment(address _tokenAddress)
+        oraclizeAPI
+        internal
+    {
+        return oraclize.setCustomTokenPayment(_tokenAddress);
+    }
+
+    function oraclize_unsetCustomTokenPayment()
+        oraclizeAPI
+        internal
+    {
+        return oraclize.unsetCustomTokenPayment();
     }
     /**
      *
